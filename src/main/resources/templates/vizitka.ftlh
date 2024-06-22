@@ -2,23 +2,27 @@
 [@c.page]
     <div class="detail">
         <div class="vizitka">
-            <div class="jmeno">Dita (Přikrylová) Formánková</div>
-            <div class="firma">Czechitas z. s.</div>
+            <div class="jmeno">${vizitkaOptional.cele_jmeno}</div>
+            <div class="firma">${vizitkaOptional.firma}</div>
             <div class="udaje">
                 <div class="adresa">
-                    <div>Václavské náměstí 837/11</div>
-                    <div><span>11000</span> <span>Praha 1</span></div>
+                    <div>${vizitkaOptional.ulice}</div>
+                    <div><span>${vizitkaOptional.psc}</span> <span>${vizitkaOptional.obec}</span></div>
                 </div>
                 <div class="kontakty">
-                    <div><i class="las la-at"></i> <span>dita@czechitas.cs</span></div>
-                    <div><i class="las la-phone-alt"></i> <span>+420 800123456</span></div>
-                    <div><i class="las la-globe"></i> <span>www.czechitas.cz</span></div>
+                    <div>[#if vizitkaOptional.email??]<i class="las la-at"></i>
+                            <span>${vizitkaOptional.email}</span>[#else]<span>not defined</span>[/#if]</div>
+                    <div>[#if vizitkaOptional.telefon??]<i class="las la-phone-alt"></i>
+                            <span>${vizitkaOptional.telefon}</span>[#else]<span>not defined</span>[/#if]</div>
+                    <div>[#if vizitkaOptional.web??]<i class="las la-globe"></i>
+                            <span>${vizitkaOptional.web}</span>[#else]<span>not defined</span>[/#if]</div>
                 </div>
             </div>
         </div>
 
         <div class="mapa">
-            <iframe style="border:none" src="https://frame.mapy.cz/?q=${'Václavské náměstí 837/11, Praha'?url}" width="100%" height="100%"
+            <iframe style="border:none" src="https://frame.mapy.cz/?q=${vizitkaOptional.celaAdresa?url}" width="100%"
+                    height="100%"
                     frameborder="0"></iframe>
         </div>
 
